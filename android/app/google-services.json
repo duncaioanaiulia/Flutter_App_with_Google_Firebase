@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "805837564651",
+    "project_id": "flutter--tutorial",
+    "storage_bucket": "flutter--tutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805837564651:android:5c9f2866ef1bbc4f34ecae",
+        "android_client_info": {
+          "package_name": "com.example.flutter_training"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805837564651-3pnjljjb662i18b1o1onvlgsheq6bihr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Q4qQROOd3j75mhGPMDlROZX4zEWP5ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805837564651-3pnjljjb662i18b1o1onvlgsheq6bihr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
