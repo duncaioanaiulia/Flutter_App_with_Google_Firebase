@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -35,26 +38,24 @@ class NotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Test Flutter')),
-                    body: Padding(
-                        child:_createBody(),
-                        padding: const EdgeInsets.all(16.0)
-                    ),
+    return Scaffold(
+      appBar: AppBar(title: Text('Test Flutter')),
+      body: Padding(child: _createBody(), padding: const EdgeInsets.all(16.0)),
     );
   }
 
-  Widget _createBody(){
-    return StreamBuilder(stream: FirebaseFirestore.instance
-                          .collection('notes')
-                          .doc('quick')
-                          .snapshots(),
-                         builder:(context,snapshot){
-                          if(snapshot.hasData){
-                              var doc = snapshot.data as Map;
-                              return Text(doc['content']);
-                          }
-                          return Center(child: CircularProgressIndicator());
-                        }
-    );
+  Widget _createBody() {
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('notes')
+            .doc('quick')
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            var doc = snapshot.data as DocumentSnapshot;
+            return Text(doc['content']);
+          }
+          return Center(child: CircularProgressIndicator());
+        });
   }
 }
