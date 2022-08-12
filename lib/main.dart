@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -43,6 +44,17 @@ class NotePage extends StatelessWidget {
   }
 
   Widget _createBody(){
-    return Text('Your note is here');
+    return StreamBuilder(stream: FirebaseFirestore.instance
+                          .collection('notes')
+                          .doc('quick')
+                          .snapshots(),
+                         builder:(context,snapshot){
+                          if(snapshot.hasData){
+                              var doc = snapshot.data as Map;
+                              return Text(doc['content']);
+                          }
+                          return Center(child: CircularProgressIndicator());
+                        }
+    );
   }
 }
